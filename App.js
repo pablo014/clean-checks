@@ -24,7 +24,6 @@ export default function App() {
 
   const startLogin = (login) => {
     setIsLoggedIn(login)
-    console.log(isLoggedIn)
   }
 
   const startRegister = (register) => {
