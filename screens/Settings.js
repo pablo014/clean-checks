@@ -1,9 +1,11 @@
 import React from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View, StyleSheet, Text} from 'react-native'
 
 const Settings = props => {
     return(
-        <View></View>
+        <View>
+            <Text>Settings</Text>
+        </View>
     )
 }
 

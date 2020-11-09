@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View, StyleSheet, Text} from 'react-native'
 import * as firebase from 'firebase'
 
 const SignUp = props => {
@@ -9,7 +9,7 @@ const SignUp = props => {
     })
     return(
         <View>
-
+            <Text>Job Sign Up</Text>
         </View>
     )
 }
