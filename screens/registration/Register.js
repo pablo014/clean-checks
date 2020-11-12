@@ -7,8 +7,8 @@ import {View,
     Alert, 
     Button, 
     Keyboard} from 'react-native'
-import Card from '../components/Card'
-import Fonts from '../constants/fonts'
+import Card from '../../components/Card'
+import Fonts from '../../constants/fonts'
 import * as firebase from 'firebase'
 import Register1 from './Register1'
 import Register2 from './Register2'

@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View, StyleSheet, Text} from 'react-native'
 
 const Welcome = props => {
     return(
@@ -9,7 +9,7 @@ const Welcome = props => {
     )
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     titleContainer: {
         paddingVertical:20,
         justifyContent: 'flex-start',

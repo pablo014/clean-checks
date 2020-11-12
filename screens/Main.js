@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import {View, Text, StyleSheet, Settings} from 'react-native'
+import {View, Text, StyleSheet} from 'react-native'
 import * as firebase from 'firebase'
-import NavBar, {NavButton, NavButtonText, NavTitle} from 'react-native-nav'
 import Welcome from './Welcome.js'
 import CleanChecker from './CleanChecker'
 import SignUp from './SignUp.js'
+import Settings from './Settings.js'
+import NavbarC from '../components/NavBarC'
+import NavbarR from '../components/NavbarR'
+import NavigationBar from 'react-native-navbar';
+import Colors from '../constants/colors'
 
 const Main = props => {
     const [name, setName] = useState('')
@@ -13,7 +17,7 @@ const Main = props => {
     const [job, setJob] = useState('')
     const [isCleanChecker, setIsCleanChecker] = useState(false)
     const [pass, setPass] = useState(true)
-    const [page, setPage] = useState('welcome')
+    const [page, setPage] = useState('Home')
     var userId = firebase.auth().currentUser.uid
     var reference = firebase.database().ref('/users/' + userId)
 
@@ -26,67 +30,51 @@ const Main = props => {
         setPass(snapshot.val().pass)
     })
 
+    const movePage = (pageName) => {
+        console.log(pageName)
+        setPage(pageName)
+    }
+
+    const test = (value) => {
+        console.log(value)
+    }
+
+    const logoutButtonConfig = {
+        title: 'Logout',
+        handler: ()=> {
+            firebase.auth().signOut().then(() => {props.isLoggedIn(false)})
+        }
+    }
+
     let content = <Welcome name={name}/>
 
-    if(page == 'welcome') {
+    if(page == 'Home') {
         content = <Welcome name={name}/>
     }
-    else if(page == 'cleanChecker') {
-        content = <CleanChecker/>
+    else if(page == 'Clean Checks') {
+        content = <CleanChecker apt={apt} aptNum={aptNum}/>
     }
-    else if(page == 'signUp'){
+    else if(page == 'Job Sign Up'){
         content = <SignUp apt={apt} aptNum={aptNum}/>
     }
-    else if(page == 'settings') {
+    else if(page == 'Settings') {
         content = <Settings />
     }
+
     let navigation
     if (isCleanChecker) {
-    navigation = <NavBar >
-        <View>
-            <NavButton onPress={setPage('settings')}>
-                <NavButtonText>{"Settings"}</NavButtonText>
-            </NavButton>
-        </View>
-        <View>
-            <NavButton onPress={setPage('welcome')}>
-                <NavButtonText>{"Home"}</NavButtonText>
-            </NavButton>
-        </View>
-        <View>
-            <NavButton onPress={setPage('signUp')}>
-                <NavButtonText>{"Job Sign Up"}</NavButtonText>
-            </NavButton>
-        </View>
-        <View>
-            <NavButton onPress={setPage('cleanChecker')}>
-                <NavButtonText>{"Clean Check"}</NavButtonText>
-            </NavButton>
-        </View>
-    </NavBar>
+        navigation = <NavbarC page={movePage}/>
     }
     else {
-        navigation = <NavBar >
-        <View>
-            <NavButton>
-                <NavButtonText onPress={setPage('settings')}>{"Settings"}</NavButtonText>
-            </NavButton>
-        </View>
-        <View>
-            <NavButton>
-                <NavButtonText onPress={setPage('welcome')}>{"Home"}</NavButtonText>
-            </NavButton>
-        </View>
-        <View>
-            <NavButton>
-                <NavButtonText onPress={setPage('signUp')}>{"Job Sign Up"}</NavButtonText>
-            </NavButton>
-        </View>
-    </NavBar>
+        navigation = <NavbarR page={movePage} test={test}/>
     }
 
     return (
         <View style={styles.screen}>
+            <NavigationBar 
+            title={page}
+            leftButton={logoutButtonConfig}
+            />
             {content}
             <View style={styles.NavBarContainer}>
                 {navigation}
@@ -105,12 +93,11 @@ const styles = StyleSheet.create({
     NavBarContainer: {
         flex: 1,
         justifyContent: 'flex-end',
-        marginBottom:40,
-        
+        marginBottom:0,
     },
     screen: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: Colors.background,
     },
 })
 

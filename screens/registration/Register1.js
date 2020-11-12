@@ -7,8 +7,8 @@ import {View,
     Alert, 
     Button, 
     Keyboard} from 'react-native'
-import Card from '../components/Card'
-import Fonts from '../constants/fonts'
+import Card from '../../components/Card'
+import Fonts from '../../constants/fonts'
 import * as firebase from 'firebase'
 
 
@@ -45,14 +45,15 @@ const Register1 = props => {
             }
             else {
                 setConfirm(true)
-                firebase.auth().createUserWithEmailAndPassword(user, pass).catch(function(error){
+                if(firebase.auth().createUserWithEmailAndPassword(user, pass).catch(function(error){
                     var errorCode = error.code
                     var errorMessage = error.message
                     console.log(errorCode + ' ' + errorMessage)
                     Alert.alert(errorCode, errorMessage, [{text:'okay', style:'destructive', onPress:resetInputHandler}])
-                })
+                })){
                 resetInputHandler()
                 props.toNext(true)
+                }
             }
     }
     

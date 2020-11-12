@@ -8,7 +8,7 @@ import {
 import Title from './components/header'
 import Login from './screens/Login'
 import Colors from './constants/colors'
-import Register from './screens/Register'
+import Register from './screens/registration/Register'
 import Main from './screens/Main'
 import * as firebase from 'firebase'
 import apiKeys from "./constants/apiKeys";
@@ -36,8 +36,8 @@ export default function App() {
   if(isRegister) {
     content = <View style={styles.container}><Register toLogin={startRegister} toMain={startLogin}/></View>
   }
-  else if(isLoggedIn) {
-    content = <Main />
+  else if(isLoggedIn || firebase.auth().currentUser) {
+    content = <Main isLoggedIn={startLogin}/>
   }
   else {
     content =<View style={styles.container}><Login register={startRegister} isLoggedIn={startLogin}/></View> 

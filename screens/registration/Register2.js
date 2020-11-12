@@ -1,28 +1,31 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback, CheckBox} from 'react-native'
-import Card from '../components/Card'
+import Card from '../../components/Card'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import * as firebase from 'firebase'
-import FormStyles from '../constants/basicFormItems'
-import Fonts from '../constants/fonts'
+import FormStyles from '../../constants/basicFormItems'
+import Fonts from '../../constants/fonts'
 
 const Register2 = props => {
     const [apt, setApt] = useState('universityView')
     const [aptNum, setAptNum] = useState('')
     const [fName,setFName] = useState('')
     const [lName, setLName] = useState('')
-    const [isCleanChecker, setIsCleanChecker] = useState(false)
+    const [isCleanChecker, setIsCleanChecker] = useState(true)
 
     var database = firebase.database()
     var storeData = {
+        "name": "",
+        "initials": "",
         "apt": "",
         "aptNum": "",
-        "name": "",
-        "isCleanChecker": false,
+        "isCleanChecker": true,
         "job": "",
         "uid": "",
         "pass": true,
     }
+
+    
     var radio_props = [
         {label: 'University View', value: 'universityView'},
         {label: 'Centre Square', value: 'centreSquare'},
@@ -35,12 +38,18 @@ const Register2 = props => {
 
     const onFinishRegistration = () => {
         storeData.name = fName + " " + lName
+        storeData.initials = fName[0]+lName[0]
         storeData.apt = apt
         storeData.aptNum = aptNum
         storeData.isCleanChecker = isCleanChecker
         storeData.uid = firebase.auth().currentUser.uid
-        database.ref('/' + apt + '/' + aptNum).update(storeData)
+        let numResidents
+        database.ref('/'+ apt + 'Rooms/' + aptNum).once('value').then(function(snapshot){
+            numResidents = {numResidents: snapshot.numResidents}
+        })
+        database.ref('/' + apt + '/' + aptNum + '/' + storeData.name).update(storeData)
         database.ref('/users/' + storeData.uid).update(storeData)
+        database.ref('/' + apt + 'Rooms/' + aptNum).update(numResidents)
         // if(firebase.auth().currentUser) {
         //     firebase.auth().signOut()
         // }
@@ -97,9 +106,10 @@ const Register2 = props => {
             <View>
             <Text style={FormStyles.checkboxLabel}>Are You A Clean Checker?</Text>
             <RadioForm 
+            
             radio_props={[{label: "Yes", value: true}, {label: "No", value: false}]}
             initial={0}
-            onPress={(value) => {setIsCleanChecker(value)}}
+            onPress={(value) => {console.log(value); setIsCleanChecker(value)}}
             />
             </View>
             <View style={FormStyles.buttonContainer}>

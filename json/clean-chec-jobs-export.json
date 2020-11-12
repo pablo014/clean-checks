@@ -1,0 +1,55 @@
+[ null, null, null, [ null, {
+  "name" : "Bathrooms & Bed",
+  "responsibilities" : [ "Clean Showers", "Clean Toilets", "Sweep and Mop Floors", "Dust Vents", "Wipe Down Vanities, Sinks, Faucets, and Mirrors", "Remove All Trash", "Organize Personal Items" ]
+}, {
+  "name" : "Laundry, Living Room & Bed",
+  "responsibilities" : [ "Dust All Shelving", "Sweep/Mop Laundry Room", "Wipe Down Exterior of Washer and Dryer", "Vacuum Out Lint Trap in Dryer", "Dust Vent in Hallway", "Clean Fridges and Freezers", "Clean & Vacuum Living Room Floors", "Dust Furniture in Living Room", "Wipe Down Kitchen Table", "Wipe Down Kitchen Counter", "Clean Sink & Put Away Dishes", "Organize Personal Items" ]
+}, {
+  "name" : "Kitchen",
+  "responsibilities" : [ "Clean 1st Fridge", "Wipe Down Kitchen Cabinets", "Clean Exterior and Interior the Oven", "Clean the Microwave Interior and Exterior", "Sweep and Mop Floor", "Clean Stovetop", "Clean Drip Pans and Oven Controls", "Wipe Down Dishwasher", "Remove All Trash", "Remove Black Marks on Front Door" ]
+} ], [ null, {
+  "name" : "Bathrooms & Bed",
+  "responsibilities" : [ "Clean Showers", "Clean Toilets", "Sweep and Mop Bathroom Floors", "Dust Vents", "Wipe Down Vanity, Sinks, Faucets, & Mirrors", "Remove All Trash From Bathroom", "Organize Personal Items" ]
+}, {
+  "name" : "Laundry, Living Room & Bed",
+  "responsibilities" : [ "Dust All Shelving", "Sweep/Mop Floor in Laundry Room", "Vacuum Lint Out of Lint Trap", "Wipe Down Exterior of Washer and Dryer", "Dust Vent in Hallway", "Clean Fridge 2", "Dust Furniture in Living Room", "Clean & Vacuum Floors in Living Room and Hallway", "Organize Personal Items" ]
+}, {
+  "name" : "Kitchen 1",
+  "responsibilities" : [ "Clean & Put Away Dishes", "Remove Clutter from Counter", "Clean and Shine Sink", "Sweep & Mop Kitchen Floor", "Remove All Trash in Kitchen", "Clean Fridge 1" ]
+}, {
+  "name" : "Kitchen 2",
+  "responsibilities" : [ "Clean Oven Exterior and Interior", "Clean Stovetop", "Clean Drip Pans", "Clean Exterior and Interior of Microwave", "Wipe Down Exterior of Dishwasher", "Clean Under the Hood of the Stovetop" ]
+} ], [ null, {
+  "name" : "Bathroom 1 & Bed",
+  "responsibilities" : [ "Clean Shower", "Clean Toilet", "Sweep and Mop Floors", "Dust Vents", "Wipe Down Vanity, Sinks, Faucets & Mirrors", "Remove All Trash", "Vacuum Hallway", "Organize Personal Items" ]
+}, {
+  "name" : "Bathroom 2 & Bed",
+  "responsibilities" : [ "Clean Showers", "Clean Toilet", "Sweep and Mop Floors", "Dust Vents", "Wipe Down Vanity, Sinks, Faucets & Mirrors", "Remove All Trash", "Wipe Down Kitchen Cabinet Exteriors", "Organize Personal Items" ]
+}, {
+  "name" : "Laundry Room & Bed",
+  "responsibilities" : [ "Dust All Shelving", "Sweep/Mop Floor in Laundry Room", "Wipe Down Washer and Dryer Exteriors", "Vacuum Out Lint Trap in Dryer", "Dust Vent in Hallway", "Clean 2nd Fridge and Freezer", "Clean 1st Fridge and Freezer", "Organize Personal Items" ]
+}, {
+  "name" : "Kitchen & Bed",
+  "responsibilities" : [ "Clean and Put Away Dishes", "Wipe Down Counters and Shine Sink", "Remove Clutter from Counters", "Sweep & Mop Kitchen Floor", "Remove Trash", "Remove Black Marks from Front Door", "Wipe Down Table", "Organize Personal Items" ]
+}, {
+  "name" : "Stovetop & Bed",
+  "responsibilities" : [ "Clean Oven Exterior, Microwave & Dishwasher", "Clean Inside Microwave & Underneath Stove Hood", "Clean Stovetop", "Clean Drip Pan & Oven Controls", "Clean Interior of the Oven", "Dust Furniture in Living Room", "Vacuum Living Room Floor", "Organize Personal Items" ]
+} ], [ null, {
+  "name" : "Bathroom 1 & Bed",
+  "responsibilities" : [ "Clean Shower", "Clean Toilet", "Sweep and Mop Floors", "Dust Vents", "Wipe Down Vanity, Sinks, Faucets, & Mirror", "Remove All Trash", "Organize Personal Items" ]
+}, {
+  "name" : "Bathroom 2 & Bed",
+  "responsibilities" : [ "Clean Shower", "Clean Toilet", "Sweep and Mop Floors", "Dust Vents", "Wipe Down Vanity, Sinks, Faucets, & Mirror", "Remove All Trash", "Organize Personal Items" ]
+}, {
+  "name" : "Laundry Room & Bed",
+  "responsibilities" : [ "Dust All Shelving", "Sweep/Mop Floor in Laundry Room", "Wipe Down Exterior of Washer and Dryer", "Vacuum Out the Lint Trap in Dryer", "Dust Vent in Hallway", "Clean 2nd Fridge & Freezer", "Organize Personal Items" ]
+}, {
+  "name" : "Kitchen Counter & Bed",
+  "responsibilities" : [ "Clean and Put Away Dishes", "Wipe Down Counters and Shine Sink", "Remove Clutter from Counters", "Sweep & Mop Kitchen Floor", "Remove Trash", "Remove Black Marks from Front Door", "Organize Personal Items" ]
+}, {
+  "name" : "Fridge 1 & Bed",
+  "responsibilities" : [ "Clean 1st Fridge", "Wipe Down Table", "Wipe Down Cabinet Exteriors", "Clean & Vacuum Living Room & Hallway Floor", "Organize Personal Items" ]
+}, {
+  "name" : "Stovetop & Bed",
+  "responsibilities" : [ "Clean Oven Exterior, Microwave, & Dishwasher", "Clean Inside Microwave & Under Stove Hood", "Clean Stovetop", "Clean Drip Pan and Oven Controls", "Clean Interior of Oven", "Dust Furniture in Living Room", "Organize Personal Items" ]
+} ] ]
