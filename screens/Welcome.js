@@ -2,9 +2,29 @@ import React from 'react'
 import {View, StyleSheet, Text} from 'react-native'
 
 const Welcome = props => {
+
+    let status;
+
+    switch (props.status) {
+        case 0: 
+            status = 'Fail';
+            break;
+        case 1:
+            status = 'Pass';
+            break;
+        case 2: 
+            status = 'Recheck';
+            break;
+        case 3: 
+            status = 'Unchecked';
+            break;
+    }
+    
     return(
             <View style={styles.titleContainer}>
             <Text>Welcome {props.name}</Text>
+            <Text>Your Job is Job {props.job}</Text>
+            <Text>Clean Check Status: {status}</Text>
             </View>
     )
 }

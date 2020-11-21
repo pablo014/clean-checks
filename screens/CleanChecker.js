@@ -1,20 +1,46 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {View, StyleSheet, Text} from 'react-native'
+import ApartmentList from './cleanCheckers/ApartmentList'
+import Jobs from './cleanCheckers/Jobs'
 import * as firebase from 'firebase'
 
 const CleanChecker = props => {
-    let numResidents;
-    let responsibilities;
+    const [page, changePage] = useState('list')
+    const [aptNum, changeAptNum] = useState('0000')
 
-    firebase.database().ref(props.apt + 'Rooms/' + props.aptNum).on('value', function(snapshot){
-        numResidents = snapshot.numResidents
-        responsibilities = require('../json/clean-chec-jobs-export.json')
-        console.log(responsibilities)
+    const onChangePage = (value) => {
+        changePage(value)
+    }
+    const onChangeAptNum = (value) => {
+        changeAptNum(value)
+    }
+    let aptList = [];
+
+    firebase.database().ref(props.apt + 'Rooms').once('value').then((snapshot)=>{
+        snapshot.forEach((value)=>{
+            aptList.push(value.key)
+        })
     })
+
+    let content;
+
+    switch (page) {
+        case 'list':
+            content = <ApartmentList aptList={aptList}/>
+            break;
+        case 'jobs' :
+            content = <Jobs />
+            break;
+        default : 
+            content = <ApartmentList aptList={aptList}/>
+            break;
+    }
+
 
     return(
         <View>
-            <Text>Clean Checks Page</Text>
+            <Text>Hello</Text>
+            {content}
         </View>
     )
 }

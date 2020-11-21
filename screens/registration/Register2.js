@@ -22,7 +22,7 @@ const Register2 = props => {
         "isCleanChecker": true,
         "job": "",
         "uid": "",
-        "pass": true,
+        "pass": 3,
     }
 
     
@@ -43,13 +43,13 @@ const Register2 = props => {
         storeData.aptNum = aptNum
         storeData.isCleanChecker = isCleanChecker
         storeData.uid = firebase.auth().currentUser.uid
-        let numResidents
         database.ref('/'+ apt + 'Rooms/' + aptNum).once('value').then(function(snapshot){
-            numResidents = {numResidents: snapshot.numResidents}
+            database.ref('/' + apt + 'Rooms/' + aptNum).update({'numResidents': snapshot + 1, 'status': 3})
         })
+        
         database.ref('/' + apt + '/' + aptNum + '/' + storeData.name).update(storeData)
         database.ref('/users/' + storeData.uid).update(storeData)
-        database.ref('/' + apt + 'Rooms/' + aptNum).update(numResidents)
+        
         // if(firebase.auth().currentUser) {
         //     firebase.auth().signOut()
         // }

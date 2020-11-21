@@ -16,10 +16,17 @@ const Main = props => {
     const [aptNum, setAptNum] = useState('')
     const [job, setJob] = useState('')
     const [isCleanChecker, setIsCleanChecker] = useState(false)
-    const [pass, setPass] = useState(true)
+    const [pass, setPass] = useState('3')
     const [page, setPage] = useState('Home')
     var userId = firebase.auth().currentUser.uid
     var reference = firebase.database().ref('/users/' + userId)
+    const responsibilitiesJson = require('../json/clean-chec-jobs-export.json')
+
+    const [numResidents, changeNumResidents] = useState(0)
+    const [responsibilitiesArray, changeResponsibilitiesArray] = useState([])
+    
+
+    
 
     reference.once('value').then(function(snapshot) {
         setName(snapshot.val().name)
@@ -28,16 +35,21 @@ const Main = props => {
         setJob(snapshot.val().job)
         setIsCleanChecker(snapshot.val().isCleanChecker)
         setPass(snapshot.val().pass)
+        firebase.database().ref(apt + 'Rooms/' + aptNum).once('value').then(function(snap){
+            changeNumResidents(snap.val().numResidents)
+            changeResponsibilitiesArray(responsibilitiesJson[numResidents])
+        })
     })
 
     const movePage = (pageName) => {
-        console.log(pageName)
         setPage(pageName)
     }
 
     const test = (value) => {
         console.log(value)
     }
+
+    let testArray = [{name: 'Angelo', run: 'test'}, {name: 'Test', run: 'test'}]
 
     const logoutButtonConfig = {
         title: 'Logout',
@@ -46,16 +58,16 @@ const Main = props => {
         }
     }
 
-    let content = <Welcome name={name}/>
+    let content;
 
     if(page == 'Home') {
-        content = <Welcome name={name}/>
+        content = <Welcome name={name} job={job} status={pass}/>
     }
     else if(page == 'Clean Checks') {
-        content = <CleanChecker apt={apt} aptNum={aptNum}/>
+        content = <CleanChecker apt={apt}/>
     }
     else if(page == 'Job Sign Up'){
-        content = <SignUp apt={apt} aptNum={aptNum}/>
+        content = <SignUp jobs={JSON.stringify(responsibilitiesArray)} movePage={movePage} apt={apt} aptNum={aptNum} name={name} userId={userId}/>
     }
     else if(page == 'Settings') {
         content = <Settings />
@@ -72,7 +84,6 @@ const Main = props => {
     return (
         <View style={styles.screen}>
             <NavigationBar 
-            title={page}
             leftButton={logoutButtonConfig}
             />
             {content}
