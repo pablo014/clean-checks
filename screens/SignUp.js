@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {View, StyleSheet, Text, Button} from 'react-native'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 import * as firebase from 'firebase'
+import Card from '../components/Card'
 
 const SignUp = props => {
     const [header, changeHeader] = useState('')
@@ -74,8 +75,8 @@ const SignUp = props => {
     })
 
     return(
-        <View>
-            <Text>Job Sign Up</Text>
+        <View style={styles.roomContainer}>
+            <Card>
             <RadioForm 
             radio_props={jobProps}
             initial="-1"
@@ -86,13 +87,15 @@ const SignUp = props => {
                 <Text>{res}</Text>
                 <View>{shouldShow ? submission : null}</View>
             </View>
-            
+            </Card>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-
+    roomContainer: {
+        paddingVertical: 20
+    }
 })
 
 export default SignUp

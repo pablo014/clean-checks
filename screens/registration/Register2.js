@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback, CheckBox} from 'react-native'
+import { View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback} from 'react-native'
 import Card from '../../components/Card'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import * as firebase from 'firebase'
@@ -44,7 +44,7 @@ const Register2 = props => {
         storeData.isCleanChecker = isCleanChecker
         storeData.uid = firebase.auth().currentUser.uid
         database.ref('/'+ apt + 'Rooms/' + aptNum).once('value').then(function(snapshot){
-            database.ref('/' + apt + 'Rooms/' + aptNum).update({'numResidents': snapshot + 1, 'status': 3})
+            database.ref('/' + apt + 'Rooms/' + aptNum).update({'numResidents': snapshot + 1, 'status': 3, 'comments': ""})
         })
         
         database.ref('/' + apt + '/' + aptNum + '/' + storeData.name).update(storeData)

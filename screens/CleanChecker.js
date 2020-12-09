@@ -7,6 +7,7 @@ import * as firebase from 'firebase'
 const CleanChecker = props => {
     const [page, changePage] = useState('list')
     const [aptNum, changeAptNum] = useState('0000')
+    const [content, changeContent] = useState()
 
     const onChangePage = (value) => {
         changePage(value)
@@ -20,26 +21,25 @@ const CleanChecker = props => {
         snapshot.forEach((value)=>{
             aptList.push(value.key)
         })
-    })
-
-    let content;
-
-    switch (page) {
-        case 'list':
-            content = <ApartmentList aptList={aptList}/>
-            break;
-        case 'jobs' :
-            content = <Jobs />
-            break;
-        default : 
-            content = <ApartmentList aptList={aptList}/>
-            break;
+        
+    }).then(()=>{
+        switch (page) {
+            case 'list':
+                changeContent(<ApartmentList aptList={aptList} apt={props.apt}/>)
+                break;
+            case 'jobs' :
+                changeContent(<Jobs />)
+                break;
+        }
     }
+    )
+
+    
+
 
 
     return(
         <View>
-            <Text>Hello</Text>
             {content}
         </View>
     )
